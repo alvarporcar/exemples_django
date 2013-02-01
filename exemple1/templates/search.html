@@ -1,0 +1,25 @@
+<html lang=es>
+<head>
+    <title> {% if query %} Mostra de Resultats {% endif %}</title>
+</head>
+<body>
+    <h1>Exercici de prova amb formularis</h1>
+    <form action="." method="GET">
+        <label for="q">Introdueix el títol o el nom de l'autor: </label>
+        <input type="text" name="q" value="{{ query|escape }}">
+        <input type="submit" value="Cercar">
+    </form>
+    {% if query %}
+        <h2>Resultats per a "{{ query|escape }}":</h2>
+        {% if results %}
+            <ul>
+                {% for book in results %}
+                    <li>"{{ book|escape }}"</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>Ningun llibre trobat</p>
+        {% endif %}
+    {% endif %}
+</body>
+</html>
