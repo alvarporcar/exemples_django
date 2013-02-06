@@ -1,0 +1,16 @@
+<html lang="es">
+<head>
+    <title>Contacta</title>
+</head>
+<body>
+    <h1>Contacta</h1>
+    <form action="." method="POST">
+        <table>
+            {{ form.as_table }}
+        </table>
+        <p><input type="submit" value="Enviar"></p>
+    </form>
+
+</body>
+
+</html>

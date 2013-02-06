@@ -18,6 +18,7 @@ class Publisher(models.Model):
     class Meta:
         ordering = ["name"]
 
+
 class Author(models.Model):
     salutation = models.CharField(max_length = 10)
     first_name = models.CharField(max_length = 30)

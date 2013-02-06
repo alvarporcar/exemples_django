@@ -1,0 +1,16 @@
+<html lang="es">
+<head>
+    <title>Afegeix Editor</title>
+</head>
+<body>
+    <h1>Afegeix Editor</h1>
+    <form action="." method="POST">
+        <table>
+            {{ form.as_table }}
+        </table>
+        <p><input type="submit" value="Afegir"></p>
+    </form>
+
+</body>
+
+</html>
