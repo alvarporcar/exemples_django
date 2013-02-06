@@ -1,19 +1,10 @@
-<style>
-    img { width:100px; }
-</style>
-<header>
-    <nav>
-        <ul>
-            <li><a href="/">Inicio</a></li>
-            <li><a href="/usuarios">Usuarios registrados</a></li>
-            <li><a href="/recetas">Recetas</a></li>
-            <li><a href="/sobre">Sobre</a></li>
-        </ul>
-    </nav>
-</header>
+{% block titulo %} {{receta.titulo}} {% endblock %}
 
-<section>
-    <h1>{{ receta.titulo }}</h1>
+{% block encabezado %}
+    <h1> {{receta.titulo|title}} </h1>
+{% endblock %}
+
+{% block contenido %}
     <div id="ingredientes">
         <h2>Ingredientes</h2>
         <p>{{ receta.ingredientes }}</p>
@@ -30,10 +21,12 @@
         {% for item in comentarios %}
             <p> {{ item.texto }}</p>
             {% empty %}
-            <p> Sin comentarios registrados</p>
+                <p> Sin comentarios registrados</p>
         {% endfor %}
     </div>
 </section>
 <footer>
-    <p>Registrado {{ receta.tiempo_registro }} por {{ receta.usuario }}</p>
+    <p>Registrado {{ receta.tiempo_registro|date:'SHORT_DATETIME_FORMAT'  }} por {{ receta.usuario }}</p>
 </footer>
+
+{% endblock %}

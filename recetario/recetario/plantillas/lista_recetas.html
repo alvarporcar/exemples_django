@@ -1,26 +1,27 @@
-<style>
-    img { width:100px; }
-</style>
-<header>
-    <nav>
-        <ul>
-            <li><a href="/">Inicio</a></li>
-            <li><a href="/usuarios">Usuarios registrados</a></li>
-            <li><a href="/recetas">Recetas</a></li>
-            <li><a href="/sobre">Sobre</a></li>
-        </ul>
-    </nav>
-</header>
+{% extends "base.html" %}
 
-<section>
-    <h1>Nuestras recetas</h1>
+{% block titulo %}Recetas Registradas {% endblock %}
+
+{% block css %}
+    <style>
+        img { width:100px; }
+    </style>
+{% endblock %}
+
+{% block encabezado %}
+    <h1>Nuestras Recetas</h1>
+{% endblock %}
+
+{% block contenido %}
     <ul>
         {% for receta in recetas %} 
         <li>
             <a href="/receta/{{receta.id}}">{{receta.titulo}}</a><br>
             <img src="{{MEDIA_URL}}{{receta.imagen}}">
-        
         </li>
+        {% empty %}
+            <li>Aún no hay recetas registradas</li>
         {% endfor %}
     </ul>
-</section>
+
+{% endblock %}
