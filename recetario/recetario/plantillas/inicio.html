@@ -1,30 +1,25 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 
-{% comment %}{Aquí van los comentarios {% endcomment %}
+{% comment %} Aqui van comentarios {% endcomment %}
 
-{%block titulo %}Inicio{% endblock %}
+{% block titulo %} Inicio {% endblock %}
 
-{% block style_css %}
-    .impar {background-color:#90EE90; }
-    .par {background-color:#5ACC5A; }
-{% endblock %}
-
-{% block encabezado %}
-    <h1>Recetario</h1>
+{% block encabezado %} 
+	<h1>Recetario ;) </h1>
 {% endblock %}
 
 {% block contenido %}
-    <p>
-    Actualmente tenemos registradas:
-    {% with total=recetas.count %}
-        {{ total }} receta{{total|pluralize}} 
-    {% endwith %}
-    </p>
-    <ul>
-    {% for receta in recetas %} 
-        <li class="{% cycle 'impar' 'par' %}">{{receta.titulo}}</li>
-        {% empty %}
-        <li>No hay recetas registradas aún</li>
-    {% endfor %}
-    </ul>
+  <p>
+	  Actualmente tenemos registradas: 
+     {% with total=recetas.count %} 
+		{{total}} receta{{total|pluralize}}
+	 {% endwith %}
+  </p>
+	<ul>		
+	  {% for dato in recetas %}
+	  <li class="{% cycle 'impar' 'par' %}">{{dato.titulo|title}}</li>
+	  {% empty %}
+	  <li>No hay recetas registradas aún.</li>
+	  {% endfor %}
+	</ul>
 {% endblock %}
