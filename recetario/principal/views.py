@@ -39,7 +39,7 @@ def contacto(request):
         if formulario.is_valid():
             titulo = "Mensaje desde el recetario de Maestros del Web"
             contenido = formulario.cleaned_data['mensaje']+"\n"
-            contenido += "Comunicarse a: "+ formulario.cleaned_data['correo']
+            contenido += "Comunicarse con: "+ formulario.cleaned_data['correo']
             correo = EmailMessage(titulo,contenido,to = ['alvar.porcar@gmail.com'])
             correo.send()
             return HttpResponseRedirect('/')
