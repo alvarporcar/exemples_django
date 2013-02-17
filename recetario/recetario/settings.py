@@ -153,10 +153,12 @@ LOGGING = {
     }
 }
 
-#Configuracio per a enviar missatges a gmail
-EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.google.com'
-EMAIL_HOST_USER = 'alvar.porcar@gmail.com'
-EMAIL_HOST_PASSWORD = 'amxjxzacvrnsvmjb'
-EMAIL_PORT = 587
+#Configuracio per a enviar missatges de correu
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+#EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.dipcas.es'
+EMAIL_HOST_USER = 'aporcar@dipcas.es'
+EMAIL_HOST_PASSWORD = '2013Cabanes'
+EMAIL_PORT = 25
 

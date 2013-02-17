@@ -28,10 +28,10 @@ def contact(request):
             topic = form.cleaned_data["topic"]
             messages = form.cleaned_data["messages"]
             sender = form.cleaned_data.get("sender","noreply@example.com")
-            # send_mail("Resposta del teu lloc, topic: %s" % topic,
-            #        messages, sender,
-            #        ["alvar.porcar@gmail.com"]
-            #)
+            send_mail("Resposta del teu lloc, topic: %s" % topic,
+                    messages, sender,
+                    ["alvar.porcar@gmail.com"]
+            )
             return HttpResponseRedirect("/contact/thanks/")
     
     else:

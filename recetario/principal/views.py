@@ -5,7 +5,7 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import RequestContext
 from django.contrib.auth.models import User 
-from django.core.mail import EmailMessage
+from django.core.mail import send_mail
 from principal.forms import ContactoForm, RecetaForm, ComentarioForm
 from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
 from django.contrib.auth import login, authenticate, logout
@@ -39,9 +39,8 @@ def contacto(request):
         if formulario.is_valid():
             titulo = "Mensaje desde el recetario de Maestros del Web"
             contenido = formulario.cleaned_data['mensaje']+"\n"
-            contenido += "Comunicarse a: "+ formulario.cleaned_data['correo']
-            correo = EmailMessage(titulo,contenido,to = ['alvar.porcar@gmail.com'])
-            correo.send()
+            contenido += "Comunicarse con: "+ formulario.cleaned_data['correo']
+            send_mail(titulo,contenido,'alvar.porcar@gmail.com',['balasc1@yahoo.es'],fail_silently = False)
             return HttpResponseRedirect('/')
     else:
         formulario = ContactoForm()
