@@ -153,9 +153,13 @@ LOGGING = {
     }
 }
 
+<<<<<<< HEAD
 #Configuracio per a enviar missatges de correu
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
+=======
+#Configuracio per a enviar missatges a gmail
+>>>>>>> 700c17d135eed60410eea988677c21b904672b68
 #EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.dipcas.es'
 EMAIL_HOST_USER = 'aporcar@dipcas.es'
