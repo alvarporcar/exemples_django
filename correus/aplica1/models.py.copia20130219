@@ -11,7 +11,6 @@ class Tipus_Organismes(models.Model):
 
     class Meta:
         ordering = ["nom"]
-        verbose_name_plural = "Tipus_Organismes"
 
 
 class Organismes(models.Model):
@@ -32,7 +31,6 @@ class Organismes(models.Model):
 
     class Meta:
         ordering = ["nom"]
-        verbose_name_plural = "Organismes"
 
 class Carrecs(models.Model):
     nom = models.TextField(max_length="30")
@@ -42,7 +40,6 @@ class Carrecs(models.Model):
 
     class Meta:
         ordering = ["nom"]
-        verbose_name_plural = "Carrecs"
 
 class Usuaris(models.Model):
     nom = models.CharField(max_length=30)
@@ -54,14 +51,12 @@ class Usuaris(models.Model):
     notes = models.TextField(help_text="Escriu una nota ", verbose_name="Notes", blank=True)
     carrec = models.ForeignKey(Carrecs)
     organisme = models.ForeignKey(Organismes)
-    projectes = models.ManyToManyField('Projectes', blank=True, null=True)
-    
+
     def __unicode__(self):
         return u'%s %s  |   %s  |  %s %s' %(self.cognoms,self.nom,self.carrec, self.organisme.organisme, self.organisme)
 
     class Meta:
         ordering = ["organisme","cognoms"]
-        verbose_name_plural="Usuaris"
 
 
 class Projectes(models.Model):
@@ -70,14 +65,24 @@ class Projectes(models.Model):
     abrev = models.TextField(max_length="10")
     web = models.URLField(blank=True)
     notes = models.TextField(help_text="Escriu una nota ", verbose_name="Notes", blank=True)
-    responsable = models.ForeignKey(Usuaris,related_name='responsable_de')
+    responsable = models.ForeignKey(Usuaris)
 
     def __unicode__(self):
         return self.nom
-
     class Meta:
         ordering = ["nom"]
-        verbose_name_plural="Projectes"
 
+
+
+
+class Usuaris_Projectes(models.Model):
+    usuari = models.ForeignKey(Usuaris)
+    projecte = models.ForeignKey(Projectes)
+
+    def __unicode__(self):
+        return u'%s %s | %s ' %(self.usuari.nom, self.usuari.cognoms,self.projecte.abrev)
+
+    class Meta:
+        unique_together = [('usuari','projecte')]
 
 
